@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from model import model as M
+from model import diffusion
 
 import json
 import torch
+import torchvision.transforms as T
 import os
 
 
@@ -31,6 +33,7 @@ class GenerateView:
 
         try:
             self.initiate_model()
+
         except FileNotFoundError:
             return HttpResponse(json.dumps(
                 {
@@ -38,7 +41,25 @@ class GenerateView:
                     "description": "Failed to load model state dict",
                     "results": None
                 }
-            ))
+            ), content_type="application/json")
+
+        try:
+            samples = self.create_samples(self.num_images, noise_steps=10)
+        except:
+            samples = None
+
+            return HttpResponse(json.dumps(
+                {
+                    "code": 403,
+                    "results": samples
+                }
+           ))
+
+        transform = T.ToPILImage()
+        # convert the tensor to PIL image using above transform
+        img = transform(samples.squeeze())
+
+        #TODO: Create image decoder to send decoded image binary as a successful response
 
         return HttpResponse(json.dumps(
             {
@@ -55,3 +76,14 @@ class GenerateView:
                 map_location=torch.device("cpu")
             )
         )
+
+
+    def create_samples(self, n: int, noise_steps: int) -> torch.Tensor:
+        # huge amount of noise steps and n(number of images) will increase time of generating image due weak cpu`s on web-hostings
+
+        if n > 8: return None
+
+        diff = diffusion.Diffusion(noise_steps=noise_steps)
+        samples = diff.sample(self.model, n)
+
+        return samples
