@@ -1,6 +1,6 @@
 asgiref
 certifi
-charset-normalizer1
+charset-normalizer
 colorama
 Django
 idna
