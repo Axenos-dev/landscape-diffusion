@@ -9,9 +9,10 @@ from diffusion import diffusion as diff
 def generate_from_images():
     parser = argparse.ArgumentParser()
     parser.add_argument("noise_steps", type=int)
+    parser.add_argument("batch_size", type=int)
     
     args = parser.parse_args()
-    args.batch_size = 4
+    args.batch_size = args.batch_size
     args.image_size = 64
     args.dataset_path = "test_image"
     
