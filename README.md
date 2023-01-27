@@ -6,7 +6,7 @@ Diffusion model that can generate random landscapes, which don`t exist on the Ea
 
 There is standart diffusion algorithm, which generates random noise image, and AI tries to predict which noise was used. After some linear algebra formulas we recieving some images
 
-![Image](https://github.com/Axenos-dev/landscape-diffusion/blob/main/generated_images/sample.jpg?raw=true)
+![Image](https://github.com/Axenos-dev/landscape-diffusion/blob/main/static/generated_images/sample.jpg?raw=true)
 
 # How to run it on your computer
 1. Install dependencies `pip install requirements.txt`
