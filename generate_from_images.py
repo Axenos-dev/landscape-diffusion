@@ -33,9 +33,9 @@ def generate_from_images():
     noise_image, _ = diffusion.noise_images(images, t)
     
     results = diffusion.denoise_images(model=model, x=noise_image)
-    utils.save_images(images=results, path=os.path.join("generated_images", "result.jpg"))
+    utils.save_images(images=results, path=os.path.join("static", "generated_images", "result.jpg"))
     
-    print("\nImage generated at /generated_images/result.jpg")
+    print("\nImage generated at /static/generated_images/result.jpg")
     
 
 if __name__ == "__main__":

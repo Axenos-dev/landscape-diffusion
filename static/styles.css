@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+#main_content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    max-width: 800px;
+}
+
+#main_content button{
+    border: none;
+    width: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#title{
+    color: white;
+}

@@ -24,8 +24,8 @@ def create_sample():
     
     sampled_images = diffusion.sample(model=model.to(device), n=args.num_of_images)
     
-    utils.save_images(sampled_images, os.path.join("generated_images", "sample.jpg"))
-    print("\nImage generated at /generated_images/sample.jpg")
+    utils.save_images(sampled_images, os.path.join("static", "generated_images", "sample.jpg"))
+    print("\nImage generated at /static/generated_images/sample.jpg")
     
 
 if __name__ == "__main__":
