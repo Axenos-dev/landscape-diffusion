@@ -37,3 +37,11 @@ You can run `generate_from_images.py` script with cmd line `python generate_from
 `batch_size` - describes how many images from your dataset will be used
 
 Example of command: `python generate_from_image.py 160 4` *generates image with 4 landscapes, based on 4 images in the folder*
+
+# Now you can run it on site
+
+Use `python app.py` in cmd
+
+It's runs on flask server on `http://127.0.0.1:5000/`
+
+It's not finaly done, but somehow works( *Requires page refresh to see results* )
