@@ -15,7 +15,7 @@ def create_sample(num_of_images):
     model.load_state_dict(torch.load(os.path.join("model", "checkpoints", "6.9.ckpt.pt")))
     print(f"Model loaded\n")
     
-    diffusion = diff.Diffusion(noise_steps=300)
+    diffusion = diff.Diffusion(noise_steps=1000)
     
     sampled_images = diffusion.sample(model=model.to(device), n=num_of_images)
     
